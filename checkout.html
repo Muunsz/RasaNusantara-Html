@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Aloha Zakia</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Aloha Zakia</h1>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cart-icon">
+        <a href="cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div class="container">
+      <h2>Checkout</h2>
+      <p>Complete your order</p>
+    </div>
+  </section>
+
+  <section class="checkout-section">
+    <div class="container">
+      <div class="checkout-progress">
+        <div class="progress-step active">
+          <div class="step-number">1</div>
+          <div class="step-label">Shipping</div>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step">
+          <div class="step-number">2</div>
+          <div class="step-label">Payment</div>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step">
+          <div class="step-number">3</div>
+          <div class="step-label">Confirmation</div>
+        </div>
+      </div>
+
+      <div class="checkout-container">
+        <div class="checkout-form-container">
+          <!-- Shipping Form (Step 1) -->
+          <div class="checkout-step active" id="shipping-step">
+            <h3>Shipping Information</h3>
+            <form id="shipping-form" class="checkout-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="first-name">First Name</label>
+                  <input type="text" id="first-name" name="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="last-name">Last Name</label>
+                  <input type="text" id="last-name" name="lastName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+              <div class="form-group">
+                <label for="address">Street Address</label>
+                <input type="text" id="address" name="address" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                  <label for="postal-code">Postal Code</label>
+                  <input type="text" id="postal-code" name="postalCode" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="delivery-notes">Delivery Notes (Optional)</label>
+                <textarea id="delivery-notes" name="deliveryNotes" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="delivery-time">Preferred Delivery Time</label>
+                <select id="delivery-time" name="deliveryTime">
+                  <option value="morning">Morning (9am - 12pm)</option>
+                  <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                  <option value="evening">Evening (5pm - 8pm)</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Continue to Payment</button>
+            </form>
+          </div>
+
+          <!-- Payment Form (Step 2) -->
+          <div class="checkout-step" id="payment-step">
+            <h3>Payment Method</h3>
+            <form id="payment-form" class="checkout-form">
+              <div class="payment-methods">
+                <div class="payment-method">
+                  <input type="radio" id="credit-card" name="paymentMethod" value="credit-card" checked>
+                  <label for="credit-card">
+                    <i class="far fa-credit-card"></i>
+                    Credit Card
+                  </label>
+                </div>
+                <div class="payment-method">
+                  <input type="radio" id="bank-transfer" name="paymentMethod" value="bank-transfer">
+                  <label for="bank-transfer">
+                    <i class="fas fa-university"></i>
+                    Bank Transfer
+                  </label>
+                </div>
+                <div class="payment-method">
+                  <input type="radio" id="e-wallet" name="paymentMethod" value="e-wallet">
+                  <label for="e-wallet">
+                    <i class="fas fa-wallet"></i>
+                    E-Wallet
+                  </label>
+                </div>
+              </div>
+
+              <!-- Credit Card Form -->
+              <div class="payment-details" id="credit-card-details">
+                <div class="form-group">
+                  <label for="card-name">Name on Card</label>
+                  <input type="text" id="card-name" name="cardName" required>
+                </div>
+                <div class="form-group">
+                  <label for="card-number">Card Number</label>
+                  <input type="text" id="card-number" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" name="expiryDate" placeholder="MM/YY" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="XXX" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bank Transfer Details -->
+              <div class="payment-details" id="bank-transfer-details" style="display: none;">
+                <div class="bank-details">
+                  <p>Please transfer the total amount to the following bank account:</p>
+                  <p><strong>Bank Name:</strong> Bank Central Asia</p>
+                  <p><strong>Account Name:</strong> PT Aloha Zakia Indonesia</p>
+                  <p><strong>Account Number:</strong> 1234567890</p>
+                  <p><strong>Reference:</strong> <span id="order-reference">AZ-12345</span></p>
+                  <p class="note">Please include the reference number in your transfer description. Your order will be processed once payment is confirmed.</p>
+                </div>
+              </div>
+
+              <!-- E-Wallet Details -->
+              <div class="payment-details" id="e-wallet-details" style="display: none;">
+                <div class="form-group">
+                  <label for="e-wallet-type">Select E-Wallet</label>
+                  <select id="e-wallet-type" name="eWalletType">
+                    <option value="gopay">GoPay</option>
+                    <option value="ovo">OVO</option>
+                    <option value="dana">DANA</option>
+                    <option value="linkaja">LinkAja</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="e-wallet-number">E-Wallet Number</label>
+                  <input type="text" id="e-wallet-number" name="eWalletNumber" placeholder="Enter your phone number" required>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="back-to-shipping">Back to Shipping</button>
+                <button type="submit" class="btn btn-primary">Complete Order</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Confirmation (Step 3) -->
+          <div class="checkout-step" id="confirmation-step">
+            <div class="order-confirmation">
+              <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <h3>Thank You for Your Order!</h3>
+              <p>Your order has been placed successfully.</p>
+              <div class="order-details">
+                <p><strong>Order Number:</strong> <span id="confirmation-order-number">AZ-12345</span></p>
+                <p><strong>Order Date:</strong> <span id="confirmation-order-date">March 7, 2025</span></p>
+                <p>We've sent a confirmation email to <span id="confirmation-email">your@email.com</span> with all the details.</p>
+              </div>
+              <div class="delivery-info">
+                <h4>Delivery Information</h4>
+                <p>Your order will be delivered to:</p>
+                <p id="confirmation-address">123 Street Name, City, Postal Code</p>
+                <p>Estimated delivery: <span id="confirmation-delivery-date">March 10, 2025</span></p>
+              </div>
+              <div class="confirmation-actions">
+                <a href="index.html" class="btn">Continue Shopping</a>
+                <a href="#" class="btn btn-primary" id="track-order-btn">Track Order</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div class="order-items" id="checkout-items">
+            <!-- Order items will be loaded dynamically -->
+          </div>
+          <div class="summary-totals">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="checkout-subtotal">Rp 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span id="checkout-shipping">Rp 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax</span>
+              <span id="checkout-tax">Rp 0</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="checkout-total">Rp 0</span>
+            </div>
+          </div>
+          <div class="promo-code">
+            <input type="text" placeholder="Enter promo code">
+            <button class="btn btn-sm">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Aloha Zakia</h3>
+          <p>Delicious desserts and cakes made with love and the finest ingredients.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> 123 Dessert Street, Sweet City</p>
+          <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+          <p><i class="fas fa-envelope"></i> info@alohazakia.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Aloha Zakia. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="checkout.js"></script>
+</body>
+</html>
+

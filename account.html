@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - Aloha Zakia</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>Aloha Zakia</h1>
+      </div>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cart-icon">
+        <a href="cart.html">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-banner">
+    <div class="container">
+      <h2>My Account</h2>
+      <p>Manage your account and orders</p>
+    </div>
+  </section>
+
+  <section class="account-section">
+    <div class="container">
+      <div class="account-container">
+        <div class="account-sidebar">
+          <div class="user-info">
+            <div class="user-avatar">
+              <img src="/placeholder.svg?height=100&width=100" alt="User Avatar">
+            </div>
+            <h3 id="user-name">John Doe</h3>
+            <p id="user-email">john.doe@example.com</p>
+          </div>
+          <ul class="account-menu">
+            <li class="active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+            <li data-tab="orders"><i class="fas fa-shopping-bag"></i> My Orders</li>
+            <li data-tab="addresses"><i class="fas fa-map-marker-alt"></i> Addresses</li>
+            <li data-tab="wishlist"><i class="far fa-heart"></i> Wishlist</li>
+            <li data-tab="profile"><i class="fas fa-user"></i> Profile Settings</li>
+            <li data-tab="password"><i class="fas fa-lock"></i> Change Password</li>
+            <li id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</li>
+          </ul>
+        </div>
+        
+        <div class="account-content">
+          <!-- Dashboard Tab -->
+          <div class="account-tab active" id="dashboard-tab">
+            <h3>Dashboard</h3>
+            <div class="dashboard-overview">
+              <div class="dashboard-card">
+                <div class="card-icon">
+                  <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="card-content">
+                  <h4>Orders</h4>
+                  <p class="card-value" id="orders-count">5</p>
+                </div>
+              </div>
+              <div class="dashboard-card">
+                <div class="card-icon">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <div class="card-content">
+                  <h4>Wishlist</h4>
+                  <p class="card-value" id="wishlist-count">3</p>
+                </div>
+              </div>
+              <div class="dashboard-card">
+                <div class="card-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="card-content">
+                  <h4>Addresses</h4>
+                  <p class="card-value" id="addresses-count">2</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="recent-orders">
+              <h4>Recent Orders</h4>
+              <div class="table-responsive">
+                <table class="orders-table">
+                  <thead>
+                    <tr>
+                      <th>Order #</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Total</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recent-orders-table">
+                    <!-- Recent orders will be loaded dynamically -->
+                  </tbody>
+                </table>
+              </div>
+              <a href="#" class="view-all" data-tab="orders">View All Orders</a>
+            </div>
+          </div>
+          
+          <!-- Orders Tab -->
+          <div class="account-tab" id="orders-tab">
+            <h3>My Orders</h3>
+            <div class="orders-filter">
+              <select id="order-status-filter">
+                <option value="all">All Orders</option>
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+              <div class="search-box">
+                <input type="text" id="order-search" placeholder="Search orders...">
+                <button id="order-search-btn"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="orders-table">
+                <thead>
+                  <tr>
+                    <th>Order #</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-table">
+                  <!-- Orders will be loaded dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <!-- Addresses Tab -->
+          <div class="account-tab" id="addresses-tab">
+            <h3>My Addresses</h3>
+            <div class="addresses-container" id="addresses-container">
+              <!-- Addresses will be loaded dynamically -->
+            </div>
+            <button class="btn btn-primary" id="add-address-btn">Add New Address</button>
+            
+            <!-- Add/Edit Address Form -->
+            <div class="address-form-container" id="address-form-container" style="display: none;">
+              <h4 id="address-form-title">Add New Address</h4>
+              <form id="address-form">
+                <input type="hidden" id="address-id">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="address-name">Address Name</label>
+                    <input type="text" id="address-name" placeholder="Home, Office, etc." required>
+                  </div>
+                  <div class="form-group">
+                    <label for="address-recipient">Recipient Name</label>
+                    <input type="text" id="address-recipient" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address-phone">Phone Number</label>
+                  <input type="tel" id="address-phone" required>
+                </div>
+                <div class="form-group">
+                  <label for="address-street">Street Address</label>
+                  <input type="text" id="address-street" required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="address-city">City</label>
+                    <input type="text" id="address-city" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="address-postal">Postal Code</label>
+                    <input type="text" id="address-postal" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address-notes">Delivery Notes (Optional)</label>
+                  <textarea id="address-notes" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="address-default">
+                    Set as default address
+                  </label>
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="btn btn-outline" id="cancel-address-btn">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Save Address</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <!-- Wishlist Tab -->
+          <div class="account-tab" id="wishlist-tab">
+            <h3>My Wishlist</h3>
+            <div class="wishlist-container" id="wishlist-container">
+              <!-- Wishlist items will be loaded dynamically -->
+            </div>
+          </div>
+          
+          <!-- Profile Settings Tab -->
+          <div class="account-tab" id="profile-tab">
+            <h3>Profile Settings</h3>
+            <form id="profile-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="profile-first-name">First Name</label>
+                  <input type="text" id="profile-first-name" required>
+                </div>
+                <div class="form-group">
+                  <label for="profile-last-name">Last Name</label>
+                  <input type="text" id="profile-last-name" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="profile-email">Email Address</label>
+                <input type="email" id="profile-email" required>
+              </div>
+              <div class="form-group">
+                <label for="profile-phone">Phone Number</label>
+                <input type="tel" id="profile-phone" required>
+              </div>
+              <div class="form-group">
+                <label for="profile-birthday">Birthday</label>
+                <input type="date" id="profile-birthday">
+              </div>
+              <div class="form-group">
+                <label>Gender</label>
+                <div class="radio-group">
+                  <label class="radio-label">
+                    <input type="radio" name="gender" value="male" checked>
+                    Male
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="gender" value="female">
+                    Female
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="gender" value="other">
+                    Other
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+          </div>
+          
+          <!-- Change Password Tab -->
+          <div class="account-tab" id="password-tab">
+            <h3>Change Password</h3>
+            <form id="password-form">
+              <div class="form-group">
+                <label for="current-password">Current Password</label>
+                <input type="password" id="current-password" required>
+              </div>
+              <div class="form-group">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" required>
+              </div>
+              <div class="form-group">
+                <label for="confirm-password">Confirm New Password</label>
+                <input type="password" id="confirm-password" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Aloha Zakia</h3>
+          <p>Delicious desserts and cakes made with love and the finest ingredients.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> 123 Dessert Street, Sweet City</p>
+          <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+          <p><i class="fas fa-envelope"></i> info@alohazakia.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Aloha Zakia. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>
+
